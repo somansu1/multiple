@@ -17,7 +17,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements TvShowsListener{
 
-    private Button buttonAddToWatchlist;
+    private Button buttonAdd;
+    RecyclerView tvShowsRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity implements TvShowsListener{
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        RecyclerView tvShowsRecyclerView=findViewById(R.id.tvShowsRecyclerView);
+        tvShowsRecyclerView=findViewById(R.id.tvShowsRecyclerView);
+        buttonAdd = findViewById(R.id.buttonAdd);
 
         List<TvShow> tvShows=new ArrayList<>();
 
@@ -86,10 +88,10 @@ public class MainActivity extends AppCompatActivity implements TvShowsListener{
         tvShows.add(lying);
 
 
-        final TvShowAdapter tvShowsAdapter=new TvShowAdapter(tvShows,this);
+        TvShowAdapter tvShowsAdapter = new TvShowAdapter(tvShows,this);
         tvShowsRecyclerView.setAdapter(tvShowsAdapter);
 
-        buttonAddToWatchlist.setOnClickListener(new View.OnClickListener() {
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 List<TvShow> selectedTvShows=tvShowsAdapter.getSelectedTvShows();
@@ -111,9 +113,9 @@ public class MainActivity extends AppCompatActivity implements TvShowsListener{
     @Override
     public void onTvShowAction(Boolean isSelected) {
         if (isSelected){
-            buttonAddToWatchlist.setVisibility(View.VISIBLE);
+            buttonAdd.setVisibility(View.VISIBLE);
         }else{
-            buttonAddToWatchlist.setVisibility(View.GONE);
+            buttonAdd.setVisibility(View.GONE);
         }
 
     }

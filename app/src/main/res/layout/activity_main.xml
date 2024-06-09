@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@color/colorBackground"
     tools:context=".MainActivity">
 
@@ -51,18 +52,20 @@
         android:clipToPadding="false"
         android:orientation="vertical"
         android:padding="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAdd"
         app:layout_constraintTop_toBottomOf="@+id/layoutheader" />
     <Button
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="wrap_content"
         android:id="@+id/buttonAdd"
         android:background="@color/colorAccent"
         android:text="Botom"
+        android:visibility="gone"
         android:textAllCaps="false"
         android:textColor="@color/colorTextIcons"
         android:textSize="15sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 
